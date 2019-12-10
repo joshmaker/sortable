@@ -8,4 +8,5 @@ setup(
         Extension("src.sortable.c.algorithms", ["src/sortable/c/algorithms.pyx"])
     ],
     cmdclass={"build_ext": build_ext},
+    install_requires=["Cython"],
 )
