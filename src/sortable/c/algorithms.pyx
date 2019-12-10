@@ -1,13 +1,16 @@
+#!python
+#cython: language_level=3
+
 __all__ = ("bubble", "insertion", "quicksort")
 
 
-def _compare(a, b, key=None):
+cdef bint _compare(object a, object b, object key=None):
     if key is None:
         return a < b
     return key(a) < key(b)
 
 
-def bubble(arr, key=None):
+cpdef bubble(arr, key=None):
     cdef int length, _, i
 
     length = len(arr)
@@ -20,7 +23,7 @@ def bubble(arr, key=None):
                 arr[i - 1], arr[i] = arr[i], arr[i - 1]
 
 
-def insertion(arr, key=None):
+cpdef insertion(arr, key=None):
     cdef int length, i, j
 
     length = len(arr)
@@ -36,7 +39,7 @@ def insertion(arr, key=None):
         arr[j + 1] = item
 
 
-def quicksort(arr, key=None):
+cpdef quicksort(arr, key=None):
     cdef int length, i, index
 
     length = len(arr)
